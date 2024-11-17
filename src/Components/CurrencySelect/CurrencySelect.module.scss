@@ -1,0 +1,49 @@
+.InputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .Input {
+    width: 20%;
+    font-family: sans-serif;
+    font-weight:400;
+    font-size: 32px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-color: #FFFF;
+    background-color: transparent;
+    color: black;
+    background-color: #FFFF;
+  }
+  
+  .InputOff {
+    width: 20%;
+    font-family: sans-serif;
+    font-weight:400;
+    font-size: 32px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-color: #FFFF;
+    background-color: transparent;
+    color: white;
+  }
+  
+  .Select {
+    width: 10%;
+    height: 30px;
+    margin-left: 50px;
+    font-family: sans-serif;
+    font-weight:400;
+    font-size: 18px;
+    border-color: #FFFF;
+    background-color: transparent;
+    color: white;
+  }
+  
+  .SelectOption {
+    background-color: black;
+    font-size: 18px;
+  }

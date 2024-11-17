@@ -1,0 +1,30 @@
+.Primary{
+    user-select: none;
+    color: #FFFF;
+    font-size: 24px;
+    font-family: sans-serif;
+    font-optical-sizing: auto;
+    font-weight:400;
+    font-style: normal;
+    margin-left: 30px;
+}
+.HideButton{
+font-family: sans-serif;
+font-weight:900;
+font-size: 20px;
+color:#193fbc;
+transition: 0.25s;
+background: none;
+border: 2px solid;
+line-height: 1;
+
+margin: 0.5em;
+padding: 1em 2em;
+&:hover {
+box-shadow: 
+  0 0 0 0 var(--hover),
+  inset 6em 3.5em 0 0 var(--hover);
+  border-color: var(--hover);
+  color: #fff;
+}
+}
