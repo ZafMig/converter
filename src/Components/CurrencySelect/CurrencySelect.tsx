@@ -1,11 +1,12 @@
-import { ComponentProps, FC } from 'react'
-import { setCurrencyFrom } from '../../store/currencyStore'
+import { ComponentProps, FC } from "react";
 
-import styles from './CurrencySelect.module.scss'
+
+
+import styles from "./CurrencySelect.module.scss";
 
 type Currency = {
-    code: string;
-    name: string;
+  code: string;
+  name: string;
 };
 
 
@@ -14,7 +15,8 @@ export const CurrencySelect: FC<{
   currencyFrom: string;
   currencies: Currency[];
   inputProps: ComponentProps<"input">;
-}> = ({ value, inputProps, currencyFrom, currencies }) => (
+  onCurrencyChange: (currency: string) => void; // Новый пропс
+}> = ({ value, inputProps, currencyFrom, currencies, onCurrencyChange }) => (
   <div className={styles.InputContainer}>
     <input
       type="number"
@@ -24,7 +26,7 @@ export const CurrencySelect: FC<{
     />
     <select
       value={currencyFrom}
-      onChange={(e) => setCurrencyFrom(e.target.value)}
+      onChange={(e) => onCurrencyChange(e.target.value)} // Вызываем функцию из пропсов
       className={styles.Select}
     >
       {currencies.map((currency) => (

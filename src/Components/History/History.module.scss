@@ -1,0 +1,51 @@
+$cyberpunk-font: 'Courier New', Courier, monospace; 
+
+.HideButton {
+  float: right;
+  font-family: $cyberpunk-font, sans-serif;
+ 
+  font-size: 22px;
+  color: #f1e100; 
+  
+  letter-spacing: 1px; 
+  transition: all 0.3s ease-in-out;
+  background: transparent;
+  border: 2px solid #f1e100; 
+  border-radius: 6px; 
+  line-height: 1;
+  cursor: pointer;
+  margin: 50px;
+  padding: 1em 2em;
+  box-shadow: 0 0 5px rgba(241, 225, 0, 0.3), 0 0 10px rgba(241, 225, 0, 0.4); 
+  position: relative;
+  z-index: 1;
+
+  &:hover {
+    background: linear-gradient(45deg, #f1e100, #fffb00);  
+    border-color: #fffb00;  
+    color: #000;  
+    box-shadow: 0 0 20px #f1e100, 0 0 30px #fffb00, 0 0 40px rgba(241, 225, 0, 0.5);  
+     
+  }
+
+  &:active {
+      transform: scale(0.98); 
+      box-shadow: 0 0 5px #f1e100, 0 0 10px #fffb00; 
+  }
+
+  &:before {
+      content: '';
+     
+      width: 300%;
+      height: 300%;
+      background: rgba(241, 225, 0, 0.1); 
+      transition: all 0.4s ease;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      z-index: -1;
+  }
+
+  &:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+  }
+}

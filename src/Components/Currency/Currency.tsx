@@ -4,8 +4,9 @@ import styles from "./Currency.module.scss";
 import {
   $currencyStore,
   setAmountFrom,
+  setCurrencyFrom,
   setCurrencyTo,
-  swapCurrencies
+  swapCurrencies,
 } from "../../store/currencyStore";
 import { useUnit } from "effector-react";
 import { getExchangeRate } from "../../api";
@@ -25,38 +26,39 @@ const CurrencyConverter: React.FC = () => {
     getExchangeRate({ currencyFrom, currencyTo });
   }, [currencyFrom, currencyTo]);
 
-  const handleAmountFromChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAmountFromChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
     const newAmount = parseFloat(e.target.value) || 0;
     setAmountFrom(newAmount);
-  };
+}
 
   return (
     <div className={styles.Primary}>
-      <h2 className={styles.PrimaryText}>Узнай курс</h2>
+      <h2 className={styles.PrimaryText}>Converter</h2>
       <CurrencySelect
-        value={amountFrom}
-        currencyFrom={currencyFrom}
-        currencies={currencies}
-        inputProps={{
-          onChange: handleAmountFromChange,
-          placeholder: "Enter summ",
-        }}
-      />
+  value={amountFrom}
+  currencyFrom={currencyFrom}
+  currencies={currencies}
+  inputProps={{
+    onChange: handleAmountFromChange,
+    placeholder: "Enter sum",
+  }}
+  onCurrencyChange={(newCurrency) => setCurrencyFrom(newCurrency)} // Добавлено
+/>
 
-      <button className={styles.Swap} onClick={() => swapCurrencies()}>
-         ↑↓ 
-      </button>
+<button className={styles.Swap} onClick={() => swapCurrencies()}>
+   ↑↓
+</button>
 
-      <CurrencySelect
-        value={amountTo}
-        currencyFrom={currencyTo}
-        currencies={currencies}
-        inputProps={{
-          onChange: (e) => setCurrencyTo(e.target.value),
-          placeholder: "allo",
-          disabled: true,
-        }}
-      />
+<CurrencySelect
+  value={amountTo}
+  currencyFrom={currencyTo}
+  currencies={currencies}
+  inputProps={{
+    placeholder: "Result",
+    disabled: true,
+  }}
+  onCurrencyChange={(newCurrency) => setCurrencyTo(newCurrency)} // Добавлено
+/>
 
       <p className={styles.Results}>
         Result: {amountFrom} {currencyFrom} = {amountTo} {currencyTo}

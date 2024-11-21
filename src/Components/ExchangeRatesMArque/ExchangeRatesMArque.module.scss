@@ -1,9 +1,13 @@
-.Marquee{
-    user-select: none;
-    color: #FFFF;
-        font-size: 100px;
-        font-family: sans-serif;
-        font-optical-sizing: auto;
-        font-weight:400;
-        font-style: normal;
+$cyberpunk-font: 'Courier New', Courier, monospace; 
+.Marquee {
+ 
+  color: #f1e100;  
+  font-size: 100px;
+  font-family: $cyberpunk-font ; 
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 2px;  
+  animation: marqueeEffect 10s linear infinite;  
+
 }

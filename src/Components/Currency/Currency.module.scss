@@ -1,32 +1,68 @@
+$cyberpunk-font: 'Courier New', Courier, monospace; 
+
 .Primary {
+    font-family: $cyberpunk-font, sans-serif;
     margin: 0;
-    padding-top: 0px;
+    padding-top: 0;
     user-select: none;
     text-align: center;
+    color: #f1e100; 
+    
+    transition: text-shadow 0.3s ease;
 }
 
+
 .PrimaryText {
-    color: #FFFF;
+    color: #f1e100; 
     font-size: 100px;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     margin: 0;
+   font-family: $cyberpunk-font, sans-serif;
+    transition: text-shadow 0.3s ease;
 }
+
+.Primary:hover .PrimaryText {
+    text-shadow: 0 0 15px #f1e100, 0 0 25px #f1e100; 
+}
+
 
 .Swap {
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
+  
     font-weight: 400;
     font-size: 24px;
-    color: #FFF;
-    border-color: #FFFF;
-    margin: 20px;
+    color: #f1e100; 
+    border: 2px solid #f1e100; 
     background-color: transparent;
+    margin: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    box-shadow: 0 0 5px rgba(241, 225, 0, 0.5), 0 0 10px rgba(241, 225, 0, 0.7);
 }
 
+
+.Swap:hover {
+    background: linear-gradient(45deg, #f1e100, #fffb00); 
+    border-color: #fffb00; 
+   
+    box-shadow: 0 0 15px #f1e100, 0 0 30px #fffb00, 0 0 40px rgba(241, 225, 0, 0.5); 
+}
+
+
 .Results {
-    font-family: sans-serif;
-    font-weight: 700;
+    font-family:$cyberpunk-font, sans-serif;
+    
     font-size: 24px;
-    color: #FFFF;
+    color: #f1e100; 
+   
+    transition: text-shadow 0.3s ease;
+}
+
+
+.Results:hover {
+    text-shadow: 0 0 15px #f1e100, 0 0 25px #f1e100; 
 }

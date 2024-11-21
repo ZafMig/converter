@@ -5,6 +5,7 @@ import './index.css';
 import CurrencyConverter from './Components/Currency/Currency';
 import ExchangeRatesMarquee from './Components/ExchangeRatesMArque/ExchangeRatesMArque';
 import PriceList from './Components/PriceList/PriceList';
+import History from './Components/History/History';
 
 
 
@@ -16,10 +17,9 @@ root.render(
     <ExchangeRatesMarquee/>
     <CurrencyConverter/>
     <PriceList/>
+    <History/>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 
