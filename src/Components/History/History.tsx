@@ -19,7 +19,7 @@ import {
   $rates,
   historicalStoreGate,
   setHidden,
-} from '../../store/historyStore';
+} from '../../store/featureHistory/index';
 
 // Регистрация модулей Chart.js
 ChartJS.register(

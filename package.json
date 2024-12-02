@@ -9,6 +9,14 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "volta": {
+    "node": "22.11.0",
+    "npm": "10.9.0"
+  },
+  "engines": {
+    "node": "22.11.0",
+    "npm": "10.9.0"
+  },
   "dependencies": {
     "@farfetched/core": "^0.12.8",
     "axios": "^1.7.7",

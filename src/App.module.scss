@@ -1,0 +1,59 @@
+.App::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/1.webp');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: blur(13px);
+    transform: scale(1.1);
+    z-index: -1;
+}
+
+.contentContainer {
+    display: flex;
+    align-items: flex-start;
+    /* Выравнивание по верхнему краю */
+    gap: 20px;
+    /* Расстояние между элементами */
+}
+
+.contentContainer>* {
+    flex: 1;
+    /* Оба элемента растягиваются равномерно */
+    max-width: 50%;
+    /* Ограничиваем ширину каждого элемента */
+}
+
+/* Если нужно задать конкретные размеры */
+.contentContainer>.priceList {
+    flex: 2;
+    /* Занимает больше пространства */
+}
+
+.contentContainer>.exchangeRateChart {
+    flex: 1;
+    /* Занимает меньше пространства */
+    height: 350px;
+}
+
+@media (max-width: 768px) {
+    .contentContainer {
+        flex-direction: column;
+        /* Элементы располагаются вертикально */
+    }
+
+    .contentContainer>* {
+        max-width: 100%;
+        /* Элементы занимают всю ширину */
+    }
+
+    .contentContainer>.exchangeRateChart {
+        height: auto;
+        /* Подстраиваем высоту */
+    }
+}

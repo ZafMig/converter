@@ -63,7 +63,7 @@ export const getExchangeRateQuery = createQuery({
 });
 
 // вращающаяся фигнгя
-export const getExchangeListFx = createEffect<void, ExchangeRate[], Error>(
+export const getExchangeList = createEffect<void, ExchangeRate[], Error>(
   async () => {
     const response = await client.get<ExchangeListResponse>('/latest/USD');
     return Object.entries(response.data.conversion_rates).map(
@@ -76,7 +76,7 @@ export const getExchangeListFx = createEffect<void, ExchangeRate[], Error>(
 );
 
 export const getExchangeListQuery = createQuery({
-  effect: getExchangeListFx,
+  effect: getExchangeList,
 });
 
 // история
