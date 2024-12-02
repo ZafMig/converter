@@ -14,23 +14,58 @@ body {
 
 
 
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/1.webp');
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(13px);
+  transform: scale(1.1);
+  z-index: -1;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
 .content-container {
   display: flex;
-  align-items: flex-start; 
-  gap: 20px;
+  align-items: flex-start; /* Выравнивание по верхнему краю */
+  gap: 20px; /* Расстояние между элементами */
 }
 
 .content-container > * {
-  flex: 1; 
-  max-width: 50%; 
+  flex: 1; /* Оба элемента растягиваются равномерно */
+  max-width: 50%; /* Ограничиваем ширину каждого элемента */
 }
 
-
+/* Если нужно задать конкретные размеры */
 .content-container > .price-list {
-  flex: 2; 
+  flex: 2; /* Занимает больше пространства */
 }
 
 .content-container > .exchange-rate-chart {
-  flex: 1; 
+  flex: 1; /* Занимает меньше пространства */
   height: 350px;
+}
+
+@media (max-width: 768px) {
+  .content-container {
+    flex-direction: column; /* Элементы располагаются вертикально */
+  }
+
+  .content-container > * {
+    max-width: 100%; /* Элементы занимают всю ширину */
+  }
+
+  .content-container > .exchange-rate-chart {
+    height: auto; /* Подстраиваем высоту */
+  }
 }

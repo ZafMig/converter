@@ -3,10 +3,10 @@ $cyberpunk-font: 'Courier New', Courier, monospace;
 .HideButton {
   float: right;
   font-family: $cyberpunk-font, sans-serif;
- 
+  
   font-size: 22px;
   color: #f1e100; 
-  
+
   letter-spacing: 1px; 
   transition: all 0.3s ease-in-out;
   background: transparent;
@@ -34,7 +34,7 @@ $cyberpunk-font: 'Courier New', Courier, monospace;
   }
 
   &:before {
-      content: '';
+    
      
       width: 300%;
       height: 300%;

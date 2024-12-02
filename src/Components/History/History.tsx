@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { getExchangeRatesForLast10Days, HistoricalExchangeRate } from "../../api/";
-import styles from "./History.module.scss"
-import { Line } from "react-chartjs-2";
-import { $currencyStore } from "../../store/currencyStore";
+import styles from './History.module.scss';
+import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   LineElement,
@@ -11,39 +8,36 @@ import {
   Title,
   CategoryScale,
   Tooltip,
+  Colors,
   Legend,
-} from "chart.js";
-import { useUnit } from "effector-react";
+} from 'chart.js';
+import { useGate, useUnit } from 'effector-react';
+import { $currencyStore } from '../../store/currencyStore';
+import {
+  $error,
+  $hidden,
+  $rates,
+  historicalStoreGate,
+  setHidden,
+} from '../../store/historyStore';
 
 // Регистрация модулей Chart.js
-ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale, Tooltip, Legend);
+ChartJS.register(
+  LineElement,
+  PointElement,
+  LinearScale,
+  Title,
+  CategoryScale,
+  Tooltip,
+  Colors,
+  Legend
+);
 
-const History: React.FC = (
-) => {
+const ExchangeRateChart: React.FC = () => {
   const { currencyFrom, currencyTo } = useUnit($currencyStore);
-  const [rates, setRates] = useState<HistoricalExchangeRate[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-  const [hidden, setHidden] = useState(true);
-  
-  useEffect(() => {
-    const fetchRates = async () => {
-        try {
-          setLoading(true);
-          const data = await getExchangeRatesForLast10Days({ currencyFrom, currencyTo });
-          setRates(data.reverse());
-        } catch (err: unknown) {
-          setError("Failed to fetch exchange rates.");
-          console.error(err); // или логируйте ошибку
-        } finally {
-          setLoading(false);
-        }
-      };
+  const [rates, error, hidden] = useUnit([$rates, $error, $hidden]);
 
-    fetchRates();
-  }, [currencyFrom, currencyTo]);
-
-  if (loading) return <div>Loading...</div>;
+  useGate(historicalStoreGate, { currencyFrom, currencyTo });
   if (error) return <div>{error}</div>;
 
   const data = {
@@ -52,8 +46,9 @@ const History: React.FC = (
       {
         label: `${currencyFrom} to ${currencyTo}`,
         data: rates.map((rate) => rate.rate),
-        borderColor: "rgba(75, 192, 192, 1)",
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        borderColor: 'rgba(0, 255, 102, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        tension: 0.4,
       },
     ],
   };
@@ -61,8 +56,11 @@ const History: React.FC = (
   const options = {
     responsive: true,
     plugins: {
-      legend: { position: "top" as const },
-      title: { display: true, text: `Exchange Rate: ${currencyFrom} to ${currencyTo}` },
+      legend: { position: 'top' as const },
+      title: {
+        display: true,
+        text: `Exchange Rate: ${currencyFrom} to ${currencyTo}`,
+      },
     },
     scales: {
       y: { beginAtZero: false },
@@ -70,27 +68,22 @@ const History: React.FC = (
     },
   };
 
-  
+
 
   return (
     <>
-    {hidden ? (
+      {hidden ? (
         <button className={styles.HideButton} onClick={() => setHidden(false)}>
           Hide
         </button>
       ) : (
         <button className={styles.HideButton} onClick={() => setHidden(true)}>
-          Shov
+          Show
         </button>
       )}
-      {hidden && (
-  <Line data={data} options={options} />
-
-      )}
-
+      {hidden && <Line data={data} options={options} />}
     </>
-
-);
+  );
 };
 
-export default History;
+export default ExchangeRateChart;

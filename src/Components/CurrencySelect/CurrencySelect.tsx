@@ -1,20 +1,17 @@
-import { ComponentProps, FC } from "react";
+import { ComponentProps, FC } from 'react';
 
-
-
-import styles from "./CurrencySelect.module.scss";
+import styles from './CurrencySelect.module.scss';
 
 type Currency = {
   code: string;
   name: string;
 };
 
-
 export const CurrencySelect: FC<{
   value: number;
   currencyFrom: string;
   currencies: Currency[];
-  inputProps: ComponentProps<"input">;
+  inputProps: ComponentProps<'input'>;
   onCurrencyChange: (currency: string) => void; // Новый пропс
 }> = ({ value, inputProps, currencyFrom, currencies, onCurrencyChange }) => (
   <div className={styles.InputContainer}>

@@ -1,71 +1,118 @@
-import axios from "axios";
+import axios from 'axios';
+import { createQuery } from '@farfetched/core';
+import { createEffect } from 'effector';
 
-// Получаем ключ API из переменных окружения
+// клиенты
 const client = axios.create({
   baseURL: `https://v6.exchangerate-api.com/v6/${import.meta.env.VITE_API_KEY}`,
 });
 
 const historyClient = axios.create({
-	baseURL: `https://openexchangerates.org/api`,
-	params: { app_id: import.meta.env.VITE_APP_ID },
-})
+  baseURL: `https://openexchangerates.org/api`,
+  params: { app_id: import.meta.env.VITE_APP_ID },
+});
 
-//Получение кодов
-export type CurrenciesRequest = {code: string, name: string}
+// Типы
+export type CurrenciesRequest = { code: string; name: string };
 export type CurrenciesResponse = { supported_codes: Array<[string, string]> };
 
-export const getCurrencies = async (): Promise<Array<{ code: string; name: string }>>=>{
-    const {data} = await client.get<CurrenciesResponse>
-    (`/codes`,{})
-    return data.supported_codes.map(([code, name]) => ({ code, name }))
-}
-
-//ППолучение конверсии
-
-export type ExchangeRateRequest = {currencyFrom: string, currencyTo: string};
+export type ExchangeRateRequest = { currencyFrom: string; currencyTo: string };
 export type ExchangeRateResponse = { conversion_rate: number };
 
-export const getExchangeRate = async({
-    currencyFrom,
-    currencyTo
-}: ExchangeRateRequest): Promise<number>=>{
-    const {data} = await client.get<ExchangeRateResponse>
-    (`/pair/${currencyFrom}/${currencyTo}`,{})
-    return data.conversion_rate;
-}
-
-//Валюта сверху
-
 export type ExchangeListResponse = { conversion_rates: Record<string, number> };
-
-export const getExchangeList = async (): Promise<Array<{ code: string; rate: number }>> => {
-    const { data } = await client.get<ExchangeListResponse>(`/latest/USD`, {});
-    return Object.entries(data.conversion_rates).map(([code, rate]) => ({ code, rate }));
+export type ExchangeRate = {
+  code: string;
+  rate: number;
 };
 
-export type HistoricalExchangeRequest = { currencyFrom: string; currencyTo: string };
+export type HistoricalExchangeRequest = {
+  currencyFrom: string;
+  currencyTo: string;
+};
 export type HistoricalExchangeRate = { date: string; rate: number };
 
+//Farfetched
 
-//График
+// Получение списка валют
+export const getCurrencies = createEffect<void, CurrenciesRequest[], Error>(
+  async () => {
+    const response = await client.get<CurrenciesResponse>('/codes');
+    return response.data.supported_codes.map(([code, name]) => ({
+      code,
+      name,
+    }));
+  }
+);
+
+export const getCurrenciesQuery = createQuery({
+  effect: getCurrencies,
+});
+
+// Получение курса межу двумя
+export const getExchangeRate = createEffect<ExchangeRateRequest, number, Error>(
+  async ({ currencyFrom, currencyTo }) => {
+    const response = await client.get<ExchangeRateResponse>(
+      `/pair/${currencyFrom}/${currencyTo}`
+    );
+    return response.data.conversion_rate;
+  }
+);
+
+export const getExchangeRateQuery = createQuery({
+  effect: getExchangeRate,
+});
+
+// вращающаяся фигнгя
+export const getExchangeListFx = createEffect<void, ExchangeRate[], Error>(
+  async () => {
+    const response = await client.get<ExchangeListResponse>('/latest/USD');
+    return Object.entries(response.data.conversion_rates).map(
+      ([code, rate]) => ({
+        code,
+        rate,
+      })
+    );
+  }
+);
+
+export const getExchangeListQuery = createQuery({
+  effect: getExchangeListFx,
+});
+
+// история
+const getHistoricalRateFx = createEffect<
+  { date: string; currencyFrom: string; currencyTo: string },
+  HistoricalExchangeRate,
+  Error
+>(async ({ date, currencyFrom, currencyTo }) => {
+  const response = await historyClient.get(`/historical/${date}.json`);
+  return {
+    date,
+    rate: response.data.rates[currencyTo] / response.data.rates[currencyFrom],
+  };
+});
+
+export const getHistoricalRatesQuery = createQuery({
+  effect: getHistoricalRateFx,
+});
+
+// история за 10 дней
 export const getExchangeRatesForLast10Days = async ({
-	currencyTo,
+  currencyFrom,
+  currencyTo,
 }: HistoricalExchangeRequest): Promise<HistoricalExchangeRate[]> => {
-	const today = new Date()
-	const rates: HistoricalExchangeRate[] = []
+  const today = new Date();
+  const dates = Array.from({ length: 10 }, (_, i) => {
+    const date = new Date(today);
+    date.setDate(today.getDate() - i);
+    return date.toISOString().split('T')[0];
+  });
 
-	for (let i = 0; i < 10; i++) {
-		const date = new Date(today)
-		date.setDate(today.getDate() - i)
-		const formattedDate = date.toISOString().split('T')[0]
+  const queries = dates.map((date) =>
+    getHistoricalRateFx({ date, currencyFrom, currencyTo })
+  );
 
-		const response = await historyClient.get(`/historical/${formattedDate}.json`)
+  const results = await Promise.all(queries);
 
-		rates.push({
-			date: formattedDate,
-			rate: response.data.rates[currencyTo],
-		})
-	}
-
-	return rates
-}
+  return results;
+};
