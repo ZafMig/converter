@@ -9,7 +9,7 @@ import {
   swapCurrencies,
 } from '../../store/currencyStore';
 import { useUnit } from 'effector-react';
-import { getExchangeRate } from '../../api';
+import { getExchangeRate } from '../../api/apiCurrency';
 
 const CurrencyConverter: React.FC = () => {
   const {

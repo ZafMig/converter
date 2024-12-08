@@ -6,7 +6,7 @@ import {
   restore,
 } from 'effector';
 import { createGate } from 'effector-react';
-import { getExchangeRatesForLast10Days } from '../api';
+import { getExchangeRatesForLast10Days } from '../api/apiHistory';
 
 // Gate
 export const historicalStoreGate = createGate<{

@@ -1,5 +1,5 @@
 import { createStore, createEffect, sample } from 'effector';
-import { ExchangeRate, getExchangeList } from '../api';
+import { ExchangeRate, getExchangeList } from '../api/apiCurrency';
 import { AppGate } from './appGate';
 
 export const fetchExchangeRatesFx = createEffect<void, ExchangeRate[]>({

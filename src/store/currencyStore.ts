@@ -1,5 +1,5 @@
 import { createStore, createEvent, createEffect, sample } from 'effector';
-import { getCurrencies, getExchangeRate } from '../api';
+import { getCurrencies, getExchangeRate } from '../api/apiCurrency';
 import { AppGate } from './appGate';
 
 type Currency = {

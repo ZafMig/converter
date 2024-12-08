@@ -1,5 +1,5 @@
 import { createEffect, sample } from 'effector';
-import { ExchangeRate, getExchangeList, getExchangeRateQuery } from '../../api';
+import { ExchangeRate, getExchangeList, getExchangeRateQuery } from '../../api/apiCurrency';
 import { AppGate } from '../appGate';
 import { createQuery } from '@farfetched/core';
 import { $currencyStore, setCurrencyTo, updateExchangeRate } from '../currencyStore';
