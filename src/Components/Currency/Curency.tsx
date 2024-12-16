@@ -3,9 +3,14 @@ import { CurrencyInput } from '../CurrencyInput/CurrencyInput';
 import styles from './Currency.module.scss';
 
 import { useUnit } from 'effector-react';
-import { getExchangeRate } from '../../api/Query/QueryCurrency';
-import { $currencyStore, setAmountFrom, setCurrencyFrom, swapCurrencies, setCurrencyTo } from '../../store/featureCurrency';
-
+import { getExchangeRate } from '@/api/Query/QueryCurrency.ts';
+import {
+  $currencyStore,
+  setAmountFrom,
+  setCurrencyFrom,
+  swapCurrencies,
+  setCurrencyTo,
+} from '../../store/featureCurrency';
 
 const CurrencyConverter: React.FC = () => {
   const {

@@ -1,6 +1,14 @@
-import { createEffect } from "effector";
-import { getCurrenciesCodes, getCurrenciesExchangeRate, getLatestExchange } from "../Client/ClientCurrency";
-import { CurrenciesRequest, ExchangeRateRequest, ExchangeRate} from "../Type/TypeCurrency";
+import { createEffect } from 'effector';
+import {
+  getCurrenciesCodes,
+  getCurrenciesExchangeRate,
+  getLatestExchange,
+} from '../Client/ClientCurrency';
+import {
+  CurrenciesRequest,
+  ExchangeRateRequest,
+  ExchangeRate,
+} from '../Type/TypeCurrency';
 
 // Получение списка валют
 export const getCurrencies = async (): Promise<CurrenciesRequest[]> => {

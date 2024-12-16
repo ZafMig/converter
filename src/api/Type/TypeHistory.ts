@@ -1,5 +1,5 @@
 export type HistoricalExchangeRequest = {
-  date?:string;
+  date?: string;
   currencyFrom: string;
   currencyTo: string;
 };

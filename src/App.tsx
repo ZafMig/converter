@@ -1,11 +1,10 @@
 import CurrencyConverter from './Components/Currency/Curency';
 import ExchangeRateChart from './Components/ExchangeHistory/ExchangeHistory';
 import ExchangeRatesMarquee from './Components/ExchangeRatesMarque/ExchangeRatesMArque';
-import PriceList from "./Components/PriceList/PriceList";
-import styles from "./app.module.scss"
+import PriceList from './Components/PriceList/PriceList';
+import styles from './app.module.scss';
 
 export const App = () => {
-  
   return (
     <div className={styles.App}>
       <ExchangeRatesMarquee />
@@ -20,4 +19,4 @@ export const App = () => {
       </div>
     </div>
   );
-}
+};

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const historyClient = axios.create({
   baseURL: `https://openexchangerates.org/api`,

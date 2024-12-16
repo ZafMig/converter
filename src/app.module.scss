@@ -1,41 +1,41 @@
 .App::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: url('1.webp') center / cover no-repeat;
-    filter: blur(13px);
-    transform: scale(1.1);
-    z-index: -1;
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url('1.webp') center / cover no-repeat;
+  filter: blur(13px);
+  transform: scale(1.1);
+  z-index: -1;
 }
 
 .contentContainer {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
 
-    @media(max-width: 768px) {
-        flex-direction: column;
-    }
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
-.contentContainer>* {
-    flex: 1;
-    max-width: 50%;
+.contentContainer > * {
+  flex: 1;
+  max-width: 50%;
 
-    @media(max-width: 768px) {
-        max-width: 100%;
-    }
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
 }
 
-.contentContainer>.priceList {
-    flex: 2;
+.contentContainer > .priceList {
+  flex: 2;
 }
 
-.contentContainer>.exchangeRateChart {
-    flex: 1;
-    height: 350px;
+.contentContainer > .exchangeRateChart {
+  flex: 1;
+  height: 350px;
 
-    @media(max-width: 768px) {
-        height: auto;
-    }
+  @media (max-width: 768px) {
+    height: auto;
+  }
 }

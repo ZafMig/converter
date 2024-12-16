@@ -21,6 +21,5 @@ export const getCurrenciesExchangeRate = async (
     `/pair/${currencyFrom}/${currencyTo}`
   );
 
-
 export const getLatestExchange = async (currency: ExchangeRateAPICurrency) =>
   await exchangeClient.get<ExchangeListResponse>(`/latest/${currency}`);

@@ -13,9 +13,14 @@ import {
 } from 'chart.js';
 import { useGate, useUnit } from 'effector-react';
 
-import { $error, $hidden, $rates, historicalStoreGate, setHidden } from '../../store/featureHistory';
+import {
+  $error,
+  $hidden,
+  $rates,
+  historicalStoreGate,
+  setHidden,
+} from '../../store/featureHistory';
 import { $currencyStore } from '../../store/featureCurrency';
-
 
 // Регистрация модулей Chart.js
 ChartJS.register(
