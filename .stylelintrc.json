@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss"
+  ],
+  "rules": {
+    "no-empty-source": true,
+    "property-case": null
+  }
+}

@@ -1,0 +1,43 @@
+@use '/src/styles/mixins';
+
+.App::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url('1.webp') center / cover no-repeat;
+  filter: blur(13px);
+  transform: scale(1.1);
+  z-index: -1;
+}
+
+.contentContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+
+  @include mixins.largemedia {
+    flex-direction: column;
+  }
+}
+
+.contentContainer > * {
+  flex: 1;
+  max-width: 50%;
+
+  @include mixins.largemedia {
+    max-width: 100%;
+  }
+}
+
+.contentContainer > .priceList {
+  flex: 2;
+}
+
+.contentContainer > .exchangeRateChart {
+  flex: 1;
+  height: 350px;
+
+  @include mixins.largemedia {
+    height: auto;
+  }
+}

@@ -1,0 +1,40 @@
+@use 'sass:color';
+@use '/src/styles/mixins';
+
+.HideButton {
+  float: right;
+  font-family: var(--default-font);
+  font-weight: 900;
+  font-size: 20px;
+
+  --hover: #{color.adjust(#19bc8b, $hue: 45deg)};
+
+  box-shadow:
+    0.3em 0.3em 0 0 #19bc8b,
+    inset 0.3em 0.3em 0 0 #19bc8b;
+  color: #19bc8b;
+  transition: 0.25s;
+  background: none;
+  border: 2px solid;
+  line-height: 1;
+  cursor: pointer;
+  margin: 0.5em;
+  padding: 1em 2em;
+  position: relative;
+
+  &:hover {
+    box-shadow:
+      0 0 0 0 var(--hover),
+      inset 6em 3.5em 0 0 var(--hover);
+    border-color: var(--hover);
+    color: #fff;
+  }
+
+  @include mixins.largemedia {
+    font-size: 15px;
+  }
+
+  @include mixins.smallmedia {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,54 @@
+@use '/src/styles/mixins';
+
+.InputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Input {
+  width: 15%;
+  height: 40px;
+  font-family: var(--default-font);
+  font-weight: 400;
+  font-size: 25px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-color: var(--color-green);
+  background-color: transparent;
+  color: white;
+
+  @include mixins.largemedia {
+    width: 30%;
+    height: 30px;
+    font-size: 20px;
+  }
+
+  @include mixins.smallmedia {
+    width: 30%;
+    height: 30px;
+    font-size: 20px;
+  }
+}
+
+.Select {
+  width: 10%;
+  height: 25px;
+  margin-left: 50px;
+  font-family: var(--default-font);
+  font-weight: 400;
+  font-size: 18px;
+  border-color: #005823;
+  background-color: transparent;
+  color: white;
+
+  @include mixins.largemedia {
+    width: 15%;
+  }
+}
+
+.SelectOption {
+  background-color: black;
+  font-size: 18px;
+}
