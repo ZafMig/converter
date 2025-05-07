@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1d69df5-27bd-48f6-90ee-472bfdee1e7f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f1d69df5-27bd-48f6-90ee-472bfdee1e7f" name="Changes" comment="PWA" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,8 +96,33 @@
       <updated>1746440878143</updated>
       <workItem from="1746440879397" duration="11000" />
       <workItem from="1746440891554" duration="3484000" />
-      <workItem from="1746593893987" duration="11456000" />
+      <workItem from="1746593893987" duration="11821000" />
     </task>
+    <task id="LOCAL-00001" summary="PWA">
+      <option name="closed" value="true" />
+      <created>1746608864142</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1746608864142</updated>
+    </task>
+    <task id="LOCAL-00002" summary="PWA">
+      <option name="closed" value="true" />
+      <created>1746608887562</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1746608887562</updated>
+    </task>
+    <task id="LOCAL-00003" summary="PWA">
+      <option name="closed" value="true" />
+      <created>1746608899802</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1746608899802</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,5 +150,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="PWA" />
+    <option name="LAST_COMMIT_MESSAGE" value="PWA" />
   </component>
 </project>

@@ -1,7 +1,13 @@
 import { Container } from './Components/Container/Container';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-// Объявляем тип для события установки
+// Расширяем глобальный интерфейс Window
+declare global {
+  interface Window {
+    onbeforeinstallprompt?: (e: BeforeInstallPromptEvent) => void;
+  }
+}
+
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
   userChoice: Promise<{
@@ -11,32 +17,43 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 export const App = () => {
-  useEffect(() => {
-    const handleInstallPrompt = (e: BeforeInstallPromptEvent) => {
-      e.preventDefault();
-      const installButton = document.getElementById('install-button');
+  const deferredPrompt = useRef<BeforeInstallPromptEvent | null>(null);
 
+  useEffect(() => {
+    const handleInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      // Сохраняем событие для использования позже
+      deferredPrompt.current = e as BeforeInstallPromptEvent;
+
+      const installButton = document.getElementById('install-button');
       if (installButton) {
         installButton.style.display = 'block';
-
-        installButton.onclick = () => {
-          e.prompt(); // Правильное название метода (не promt)
-          e.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-              console.log('User accepted install');
-            }
-            installButton.style.display = 'none';
-          });
-        };
       }
     };
 
-    // Правильное название события: 'beforeinstallprompt' (не beforinstallpromt)
-    window.addEventListener('beforeinstallprompt', handleInstallPrompt);
+    const installButton = document.getElementById('install-button');
+    const clickHandler = () => {
+      if (deferredPrompt.current) {
+        deferredPrompt.current.prompt();
+        deferredPrompt.current.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted install');
+          }
+          deferredPrompt.current = null;
+        });
+      }
+      const button = document.getElementById('install-button');
+      if (button) {
+        button.style.display = 'none';
+      }
+    };
 
-    // Функция очистки эффекта
+    window.addEventListener('beforeinstallprompt', handleInstallPrompt);
+    installButton?.addEventListener('click', clickHandler);
+
     return () => {
       window.removeEventListener('beforeinstallprompt', handleInstallPrompt);
+      installButton?.removeEventListener('click', clickHandler);
     };
   }, []);
 
@@ -44,7 +61,7 @@ export const App = () => {
     <div>
       <Container />
       <button
-        id="install-button" // Исправлено название ID (было install-bitton)
+        id="install-button"
         style={{ display: 'none' }}
       >
         Установить приложение
