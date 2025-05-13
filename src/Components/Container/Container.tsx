@@ -10,7 +10,6 @@ export const Container = () => {
   return (
     <div className={styles.App}>
       <ExchangeRatesMarquee />
-      <InstallButton />
       <CurrencyConverter />
       <div className={styles.contentContainer}>
         <div className={styles.priceList}>
@@ -18,6 +17,7 @@ export const Container = () => {
         </div>
         <div className={styles.exchangeRateChart}>
           <ExchangeRateChart />
+          <InstallButton />
         </div>
       </div>
     </div>
