@@ -16,17 +16,17 @@ const pwaOptions: Partial<VitePWAOptions> = {
     start_url: '/',
     icons: [
       {
-        src: 'favicon.ico',
+        src: 'Converter.png',
         sizes: '256x256',
         type: 'image/png'
       },
       {
-        src: 'favicon.ico',
+        src: 'Converter.png',
         sizes: '256x256',
         type: 'image/png'
       },
       {
-        src: 'favicon.ico',
+        src: 'Converter.png',
         sizes: '256x256',
         type: 'image/png',
         purpose: 'any maskable'
