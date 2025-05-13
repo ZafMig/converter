@@ -1,5 +1,5 @@
-// src/Components/InstallButton/InstallButton.tsx
 import { useEffect, useRef, useState } from 'react';
+import styles from './InstallButton.module.scss';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -21,7 +21,6 @@ export const InstallButton = () => {
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     };
@@ -31,11 +30,7 @@ export const InstallButton = () => {
     if (deferredPrompt.current) {
       deferredPrompt.current.prompt();
       const choiceResult = await deferredPrompt.current.userChoice;
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted install');
-      } else {
-        console.log('User dismissed install');
-      }
+      console.log(`User ${choiceResult.outcome} install`);
       deferredPrompt.current = null;
       setIsVisible(false);
     }
@@ -44,8 +39,8 @@ export const InstallButton = () => {
   if (!isVisible) return null;
 
   return (
-    <button onClick={handleClick} style={{ display: 'block' }}>
-      Установить приложение
+    <button className={styles.Button} onClick={handleClick}>
+      Install App
     </button>
   );
 };

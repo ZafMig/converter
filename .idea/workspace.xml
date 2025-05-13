@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1d69df5-27bd-48f6-90ee-472bfdee1e7f" name="Changes" comment="PWA icon" />
+    <list default="true" id="f1d69df5-27bd-48f6-90ee-472bfdee1e7f" name="Changes" comment="Name">
+      <change afterPath="$PROJECT_DIR$/src/Components/InstallButton/InstallButton.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev-dist/sw.js" beforeDir="false" afterPath="$PROJECT_DIR$/dev-dist/sw.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Container/Container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Container/Container.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/Currency/Curency.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/Currency/Curency.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/InstallButton/InstallButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/InstallButton/InstallButton.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,7 +108,7 @@
       <workItem from="1746440891554" duration="3484000" />
       <workItem from="1746593893987" duration="13044000" />
       <workItem from="1747114068315" duration="312000" />
-      <workItem from="1747122942217" duration="1783000" />
+      <workItem from="1747122942217" duration="4479000" />
     </task>
     <task id="LOCAL-00001" summary="PWA">
       <option name="closed" value="true" />
@@ -142,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747124259555</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Name">
+      <option name="closed" value="true" />
+      <created>1747124972582</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1747124972582</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,6 +190,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="PWA" />
     <MESSAGE value="PWA icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="PWA icon" />
+    <MESSAGE value="Name" />
+    <option name="LAST_COMMIT_MESSAGE" value="Name" />
   </component>
 </project>

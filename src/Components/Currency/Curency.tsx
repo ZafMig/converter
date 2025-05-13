@@ -34,7 +34,7 @@ const CurrencyConverter: React.FC = () => {
 
   return (
     <div className={styles.Primary}>
-      <h2 className={styles.PrimaryText}>†Who are You?†</h2>
+      <h2 className={styles.PrimaryText}>Convert</h2>
       <CurrencyInput
         value={amountFrom}
         currencyFrom={currencyFrom}
@@ -45,9 +45,8 @@ const CurrencyConverter: React.FC = () => {
         }}
         onCurrencyChange={(newCurrency) => setCurrencyFrom(newCurrency)}
       />
-
       <button className={styles.Swap} onClick={() => swapCurrencies()}>
-        Polarités ↑†↓ Inversées
+        Polarités ↑↓ Inversées
       </button>
 
       <CurrencyInput
@@ -60,13 +59,13 @@ const CurrencyConverter: React.FC = () => {
         }}
         onCurrencyChange={(newCurrency) => setCurrencyTo(newCurrency)}
       />
-
       <p className={styles.Results}>
         Result: {amountFrom} {currencyFrom} = {amountTo} {currencyTo}
       </p>
       <p className={styles.Results}>
         1 {currencyFrom} = {exchangeRate.toFixed(2)} {currencyTo}
       </p>
+
     </div>
   );
 };
